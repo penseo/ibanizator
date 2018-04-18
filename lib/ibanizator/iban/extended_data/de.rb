@@ -25,6 +25,15 @@ class Ibanizator
           Ibanizator.bank_db.bank_by_bank_code(bank_code).bic
         end
         memoize :bic
+
+        def to_hash
+          {
+            bank_code: bank_code,
+            account_number: account_number,
+            bic: bic,
+          }
+        end
+        alias_method :to_h, :to_hash
       end
     end # ExtendedData
   end # Iban

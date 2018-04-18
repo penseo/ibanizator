@@ -36,6 +36,14 @@ describe Ibanizator::Iban::ExtendedData::DE do
     end
   end
 
+  describe '#to_hash' do
+    it 'returns the the data as a hash' do
+      data = {:bank_code=>"21050170", :account_number=>"12345678", :bic=>"NOLADE21KIE"}
+      expect(extended_data.to_hash).to eq(data)
+      expect(extended_data.to_hash).to eq(extended_data.to_h)
+    end
+  end
+
   it 'defines the equality base on the iban' do
     extended_data2 = Ibanizator::Iban::ExtendedData::DE.new(iban)
 
